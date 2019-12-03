@@ -1,5 +1,5 @@
 <template>
-  <p>home</p>
+  <p>{{ this.$route.path}}</p>
 </template>
 
 <script>
