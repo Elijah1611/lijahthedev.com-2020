@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Bungee+Shade|Gugi:400,700");
+@import url("https://fonts.googleapis.com/css?family=Jacques+Francois+Shadow&display=swap");
+
+a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  transition: all 1s;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#fff, #2e2e2e);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(#0059ff, #000000);
+}

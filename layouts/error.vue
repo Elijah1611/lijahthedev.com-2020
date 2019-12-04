@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import ErrorCard from "~/components/Error/ErrorCard";
 
 export default {

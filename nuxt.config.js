@@ -26,11 +26,17 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ["./css/main.css"],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["./plugins/firebase.js", "./plugins/moment.js"],
+  plugins: ["./plugins/moment.js"],
+  /*
+   ** Router Settings
+   */
+  router: {
+    middleware: ["auth"]
+  },
   /*
    ** Nuxt.js dev-modules
    */
