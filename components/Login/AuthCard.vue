@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="text-center elevation-24 mx-auto"
+    class="text-center elevation-24 mx-auto mt-5"
     min-height="100%"
     max-width="800px"
   >

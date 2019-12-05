@@ -21,8 +21,9 @@
           <v-card-text>
             <div>
               <v-icon left :color="project.lang.color">mdi-code-tags</v-icon>
-              {{ project.lang.name }}
+              <span>{{ project.lang.name }}</span>
             </div>
+
             <p class="text--primary">
               {{ project.description }}
             </p>
@@ -31,11 +32,9 @@
           <v-card-actions>
             <v-spacer></v-spacer>
 
-            <Add></Add>
+            <Edit :project="{ id: id, ...project }"></Edit>
 
-            <Edit :project="project"></Edit>
-
-            <Remove :project="project"></Remove>
+            <Remove :title="project.title" :id="id"></Remove>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -44,7 +43,6 @@
 </template>
 
 <script>
-import Add from "@/components/Admin/Dialog/Add";
 import Edit from "@/components/Admin/Dialog/Edit";
 import Remove from "@/components/Admin/Dialog/Remove";
 import draggable from "vuedraggable";
@@ -52,7 +50,6 @@ import draggable from "vuedraggable";
 export default {
   components: {
     draggable,
-    Add,
     Edit,
     Remove
   },
@@ -64,11 +61,6 @@ export default {
       set(value) {
         this.$store.commit("SET_PROJECTS", value);
       }
-    }
-  },
-  methods: {
-    save() {
-      this.$store.dispatch("saveOrder");
     }
   }
 };

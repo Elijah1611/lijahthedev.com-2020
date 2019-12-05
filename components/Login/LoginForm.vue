@@ -22,6 +22,8 @@
         required
       ></v-text-field>
 
+      <v-btn color="blue" to="/"> <v-icon>mdi-home</v-icon>Home </v-btn>
+
       <v-btn
         v-if="!logout"
         :disabled="valid !== true"
@@ -30,6 +32,7 @@
       >
         <v-icon color="orange">mdi-fire</v-icon>Login
       </v-btn>
+
       <v-btn v-else color="danger" @click="logOut">
         <v-icon color="red">mdi-exit-to-app</v-icon>Logout
       </v-btn>

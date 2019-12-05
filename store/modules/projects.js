@@ -1,4 +1,5 @@
 import { firestore } from "@/services/firebase";
+import compareObjChanges from "@/helpers/compareObjChanges";
 
 export default {
   state: {
@@ -26,6 +27,23 @@ export default {
         throw error;
       }
     },
+    saveOrder({ commit, state }) {
+      const newProjectOrderById = state.projects.map(project => project.id);
+      const oldProjectOrderById = state.oldOrder;
+
+      newProjectOrderById.forEach(async (id, index) => {
+        // Dont update if order is same
+        if (id === oldProjectOrderById[index]) return;
+
+        await firestore
+          .collection("projects")
+          .doc(id)
+          .update({ order: index });
+      });
+
+      // Update store order
+      commit("SET_ORDER", newProjectOrderById);
+    },
     async getProjects({ commit }) {
       const querySnapshot = await firestore
         .collection("projects")
@@ -44,24 +62,47 @@ export default {
         projects.map(project => project.id)
       );
     },
-    saveOrder({ commit, state }) {
-      const newProjectOrderById = state.projects.map(project => project.id);
-      const oldProjectOrderById = state.oldOrder;
+    async addProject(vuexContext, newProject) {
+      try {
+        await firestore.collection("projects").add(newProject);
 
-      newProjectOrderById.forEach(async (id, index) => {
-        // Dont update if order is same
-        if (id === oldProjectOrderById[index]) {
-          return;
+        location.href("/admin");
+      } catch (error) {
+        throw error;
+      }
+    },
+    async editProject(vuexContext, { id, current, update }) {
+      try {
+        const currentProject = current;
+        const updatedProject = update;
+
+        const changes = compareObjChanges(updatedProject, currentProject);
+
+        console.log(changes);
+
+        if (changes) {
+          await firestore
+            .collection("projects")
+            .doc(id)
+            .update(changes);
+
+          location.href = "/admin";
         }
-
+      } catch (error) {
+        throw error;
+      }
+    },
+    async deleteProject(vuexContext, id) {
+      try {
         await firestore
           .collection("projects")
           .doc(id)
-          .update({ order: index });
-      });
+          .delete();
 
-      // Update store order
-      commit("SET_ORDER", newProjectOrderById);
+        location.href = "/admin";
+      } catch (error) {
+        throw error;
+      }
     }
   }
 };

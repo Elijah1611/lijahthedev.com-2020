@@ -7,13 +7,13 @@
     </template>
     <v-card>
       <v-card-title class="headline justify-center"
-        >Permanently Delete "{{ project.title }}"?</v-card-title
+        >Permanently Delete "{{ title }}"?</v-card-title
       >
 
       <v-col class="text-center">
         <v-icon size="64" color="red">mdi-trash-can-outline</v-icon>
         <v-switch
-          v-model="switch1"
+          v-model="deleteSwitch"
           append-icon="mdi-power-on"
           prepend-icon="mdi-power-off"
           class="justify-center"
@@ -23,7 +23,12 @@
       <v-card-actions>
         <v-btn color="green" @click="dialog = false">Cancel</v-btn>
         <v-spacer></v-spacer>
-        <v-btn color="red darken-1" :disabled="!switch1">Destory</v-btn>
+        <v-btn
+          @click="initDestory()"
+          color="red darken-1"
+          :disabled="!deleteSwitch"
+          >Destory</v-btn
+        >
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -32,17 +37,19 @@
 <script>
 export default {
   props: {
-    project: Object
+    title: { type: String },
+    id: { type: String }
   },
   data() {
     return {
       dialog: false,
-      switch1: false
+      deleteSwitch: false
     };
   },
   methods: {
-    delete() {
+    initDestory() {
       this.dialog = false;
+      if (this.deleteSwitch) this.$store.dispatch("deleteProject", this.id);
     }
   }
 };

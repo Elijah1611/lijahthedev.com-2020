@@ -122,7 +122,7 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn @click="dialog = false">Close</v-btn>
-        <v-btn color="blue darken-1" @click="dialog = false">Save</v-btn>
+        <v-btn color="blue darken-1" @click="edit()">Update</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -147,6 +147,17 @@ export default {
   },
   computed: {
     ...mapGetters(["projects"])
+  },
+  methods: {
+    edit() {
+      this.dialog = false;
+
+      this.$store.dispatch("editProject", {
+        id: this.project.id,
+        update: this.modifiedProject,
+        current: { ...this.project }
+      });
+    }
   }
 };
 </script>

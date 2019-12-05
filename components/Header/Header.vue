@@ -1,6 +1,6 @@
 <template>
-  <ParallaxContainer>
-    <ParallaxElement :parallaxStrength="7" type="depth" tag="div">
+  <ParallaxContainer class="parallax-container">
+    <ParallaxElement :parallaxStrength="8" type="depth" tag="div">
       <!-- Background Image Container -->
       <header class="header" role="banner" :style="image">
         <!-- Site Title -->
@@ -55,9 +55,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.parallax-container {
+  overflow: hidden;
+}
+
 .header {
   height: 100vh;
-  position: relative;
   overflow: hidden;
   background-position: center;
   background-size: cover;
@@ -68,15 +71,12 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 10vh 0;
-  position: relative;
-  z-index: 1;
+
   & h1 {
     font-size: 1.5rem;
     font-weight: 400;
-    text-align: center;
     color: #fff;
     font-family: "Bungee Shade", "Segoe UI", Verdana, sans-serif;
-    user-select: none;
   }
 
   a {
