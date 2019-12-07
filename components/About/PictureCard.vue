@@ -1,15 +1,13 @@
 <template>
-  <ParallaxContainer>
-    <v-card class="mx-auto" max-width="500px">
-      <div class="d-flex white--text align-end black-gradient">
-        <v-card-title>Full Stack Software Developer</v-card-title>
-      </div>
+  <v-card class="mx-auto" max-width="500px">
+    <div class="d-flex white--text align-end black-gradient">
+      <v-card-title>Full Stack Software Developer</v-card-title>
+    </div>
 
-      <div class="blue-gradient">
-        Dallas/Fort Worth, TX
-      </div>
-    </v-card>
-  </ParallaxContainer>
+    <div class="blue-gradient">
+      Dallas-Fort Worth, TX
+    </div>
+  </v-card>
 </template>
 
 <script>

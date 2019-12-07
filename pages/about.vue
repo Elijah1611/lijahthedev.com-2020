@@ -10,7 +10,7 @@
         <BioCard titleSearch="How I Got"></BioCard>
       </v-col>
       <v-col cols="12">
-        <BioCard titleSearch="How Far"></BioCard>
+        <BioCard titleSearch="How About"></BioCard>
       </v-col>
     </v-row>
 

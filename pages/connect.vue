@@ -16,7 +16,7 @@
       <v-col>
         <a :href="linkedin" target="_blank">
           <SocialBox
-            title="Linkedin"
+            title="LinkedIn"
             icon="mdi-linkedin-box"
             color="blue"
           ></SocialBox>

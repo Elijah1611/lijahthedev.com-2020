@@ -2,9 +2,9 @@
   <div>
     <v-card class="mx-auto bg-gradient pa-10" max-width="800px">
       <div class="d-flex white--text align-end black-gradient">
-        <v-card-title class="font-weight-thin headline gugi-font">{{
+        <v-card-text class="font-weight-thin title gugi-font">{{
           getRightBio(titleSearch).title
-        }}</v-card-title>
+        }}</v-card-text>
       </div>
 
       <v-card-text
