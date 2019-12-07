@@ -1,5 +1,9 @@
 <template>
-  <Header :navLinks="links" navType="vertical-nav" :headerImage="image"></Header>
+  <Header
+    :navLinks="links"
+    navType="vertical-nav"
+    :headerImage="image"
+  ></Header>
 </template>
 
 <script>
@@ -8,7 +12,7 @@ import image from "@/assets/images/black-design.jpg";
 
 export default {
   head: {
-    title: "LijahTheDev"
+    title: "Home"
   },
   components: {
     Header

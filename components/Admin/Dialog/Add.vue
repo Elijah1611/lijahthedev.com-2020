@@ -115,12 +115,7 @@
               </v-col>
 
               <v-col cols="6" sm="2">
-                <v-switch
-                  v-model="newProject.dark"
-                  inset
-                  label="Dark"
-                  color="black"
-                ></v-switch>
+                <v-switch v-model="newProject.dark" inset label="Dark" color="black"></v-switch>
               </v-col>
             </v-row>
           </v-form>
@@ -129,9 +124,7 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn @click="dialog = false">Close</v-btn>
-        <v-btn :disabled="valid == false" color="blue darken-1" @click="add()"
-          >Save</v-btn
-        >
+        <v-btn :disabled="valid == false" color="blue darken-1" @click="add()">Save</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -141,6 +134,7 @@
 import placeholderImage from "@/assets/images/placeholder-image.png";
 import { mapGetters } from "vuex";
 export default {
+  name: "Add",
   data() {
     return {
       placeholderImage,

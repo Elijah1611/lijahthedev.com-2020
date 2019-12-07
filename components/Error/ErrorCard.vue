@@ -13,15 +13,19 @@
         </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>Why? - {{ reason }}</v-list-item-title>
-          <v-list-item-subtitle>{{
+          <v-list-item-subtitle>
+            {{
             Date.now() | moment("MMMM Do YYYY - h:mm:ss A")
-          }}</v-list-item-subtitle>
+            }}
+          </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
     </v-list>
     <v-card-actions class="d-flex justify-center">
       <NuxtLink to="/">
-        <v-btn class="px-5"> <v-icon>mdi-home-roof</v-icon>Home </v-btn>
+        <v-btn class="px-5">
+          <v-icon>mdi-home-roof</v-icon>Home
+        </v-btn>
       </NuxtLink>
     </v-card-actions>
   </v-card>
@@ -29,6 +33,7 @@
 
 <script>
 export default {
+  name: "ErrorCard",
   props: ["error"],
   computed: {
     errorType() {

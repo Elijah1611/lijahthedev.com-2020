@@ -1,9 +1,5 @@
 <template>
-  <v-card
-    class="text-center elevation-24 mx-auto mt-5"
-    min-height="100%"
-    max-width="800px"
-  >
+  <v-card class="text-center elevation-24 mx-auto mt-5" min-height="100%" max-width="800px">
     <v-list-item>
       <v-list-item-content>
         <div class="overline mb-4" v-if="isLoggedIn">{{ user.email }}</div>
@@ -11,16 +7,11 @@
 
         <v-divider></v-divider>
 
-        <v-list-item-title
-          v-if="!isLoggedIn"
-          class="display-1 font-weight-thin mb-1 mt-5"
-          >Sign In</v-list-item-title
-        >
+        <v-list-item-title v-if="!isLoggedIn" class="display-1 font-weight-thin mb-1 mt-5">Sign In</v-list-item-title>
         <v-list-item-title
           v-else
           class="display-1 font-weight-thin mb-1 mt-5"
-          >{{ user.username || "Admin" | capitalize }}</v-list-item-title
-        >
+        >{{ user.username || "Admin" | capitalize }}</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
 
@@ -45,6 +36,7 @@ import LoginForm from "@/components/Login/LoginForm";
 import { mapGetters } from "vuex";
 
 export default {
+  name: "AuthCard",
   components: {
     LoginForm
   },

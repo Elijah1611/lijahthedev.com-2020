@@ -6,15 +6,11 @@
           <ParallaxElement :parallaxStrength="5" type="depth">
             <a :href="project.links.site" target="_blank">
               <v-card max-width="900px">
-                <v-img
-                  :src="project.image"
-                  alt="Project Photo"
-                  class="white--text align-end "
-                >
-                  <v-card-title
-                    ><v-icon>mdi-monitor-dashboard</v-icon
-                    ><v-icon>mdi-arrow-right-bold-outline</v-icon></v-card-title
-                  >
+                <v-img :src="project.image" alt="Project Photo" class="white--text align-end">
+                  <v-card-title>
+                    <v-icon>mdi-monitor-dashboard</v-icon>
+                    <v-icon>mdi-arrow-right-bold-outline</v-icon>
+                  </v-card-title>
                 </v-img>
               </v-card>
             </a>
@@ -26,14 +22,10 @@
         <ParallaxContainer>
           <v-card class="text-center" :color="project.lang.color">
             <ParallaxElement :parallaxStrength="15" type="rotation">
-              <v-icon class="raised-style" size="220">
-                {{ project.lang.icon }}
-              </v-icon>
+              <v-icon class="raised-style" size="220">{{ project.lang.icon }}</v-icon>
             </ParallaxElement>
 
-            <div class="raised-style size-up font-weight-bold">
-              {{ project.lang.name }}
-            </div>
+            <div class="raised-style size-up font-weight-bold">{{ project.lang.name }}</div>
           </v-card>
         </ParallaxContainer>
       </v-col>
@@ -43,25 +35,17 @@
       <v-col class="mx-auto" cols="12" md="8">
         <v-card class="mx-auto pa-8 title-color text--primary">
           <v-card-text>
-            <div class="font-weight-thin title text--primary">
-              {{ project.year }}
-            </div>
+            <div class="font-weight-thin title text--primary">{{ project.year }}</div>
 
-            <v-card-title class="display-1 text--primary">
-              {{ project.title }}
-            </v-card-title>
+            <v-card-title class="display-1 text--primary">{{ project.title }}</v-card-title>
 
-            <v-card-text class="title text--primary">
-              {{ project.description }}
-            </v-card-text>
+            <v-card-text class="title text--primary">{{ project.description }}</v-card-text>
 
             <v-card-text
               v-for="(paragraph, i) of project.longDescription"
               :key="i"
               class="title text--primary"
-            >
-              {{ paragraph }}
-            </v-card-text>
+            >{{ paragraph }}</v-card-text>
           </v-card-text>
         </v-card>
       </v-col>
@@ -78,6 +62,11 @@ import { ParallaxContainer, ParallaxElement } from "vue-mouse-parallax";
 import { error } from "util";
 
 export default {
+  head() {
+    return {
+      titleTemplate: `${this.$route.params.project} | %s`
+    };
+  },
   components: {
     BottomNav,
     ParallaxContainer,

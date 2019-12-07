@@ -35,6 +35,9 @@ import SocialBox from "@/components/Connect/SocialBox";
 import BottomNav from "@/components/Footer/BottomNav";
 
 export default {
+  head: {
+    title: "Connect"
+  },
   components: {
     Header,
     SocialBox,

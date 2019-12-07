@@ -18,7 +18,7 @@
 import { ParallaxContainer, ParallaxElement } from "vue-mouse-parallax";
 
 export default {
-  name: "Header",
+  name: "ProjectCard",
   components: {
     ParallaxContainer,
     ParallaxElement

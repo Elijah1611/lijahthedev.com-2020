@@ -26,6 +26,9 @@ import BioCard from "@/components/About/BioCard";
 import BottomNav from "@/components/Footer/BottomNav";
 
 export default {
+  head: {
+    title: "About"
+  },
   components: {
     Header,
     PictureCard,

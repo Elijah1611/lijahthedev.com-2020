@@ -6,9 +6,7 @@
       </v-btn>
     </template>
     <v-card>
-      <v-card-title class="headline justify-center"
-        >Permanently Delete "{{ title }}"?</v-card-title
-      >
+      <v-card-title class="headline justify-center">Permanently Delete "{{ title }}"?</v-card-title>
 
       <v-col class="text-center">
         <v-icon size="64" color="red">mdi-trash-can-outline</v-icon>
@@ -23,12 +21,7 @@
       <v-card-actions>
         <v-btn color="green" @click="dialog = false">Cancel</v-btn>
         <v-spacer></v-spacer>
-        <v-btn
-          @click="initDestory()"
-          color="red darken-1"
-          :disabled="!deleteSwitch"
-          >Destory</v-btn
-        >
+        <v-btn @click="initDestory()" color="red darken-1" :disabled="!deleteSwitch">Destory</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -36,6 +29,7 @@
 
 <script>
 export default {
+  name: "Remove",
   props: {
     title: { type: String },
     id: { type: String }

@@ -1,11 +1,6 @@
 <template>
   <v-bottom-navigation v-model="active">
-    <v-btn
-      v-for="(link, i) in navLinks"
-      :key="i"
-      :value="link.value"
-      :to="link.route"
-    >
+    <v-btn v-for="(link, i) in navLinks" :key="i" :value="link.value" :to="link.route">
       <span>{{ link.title }}</span>
       <v-icon>{{ link.icon }}</v-icon>
     </v-btn>
@@ -19,6 +14,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  name: "BottomNav",
   data() {
     return {
       active: this.$route.path.substring(1),

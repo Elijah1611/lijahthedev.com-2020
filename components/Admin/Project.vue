@@ -1,6 +1,12 @@
 <template>
-  <v-container>
-    <draggable tag="div" class="row" v-model="projects" handle=".projectCard">
+  <v-container class="top-padding">
+    <draggable
+      tag="div"
+      class="row"
+      v-model="projects"
+      handle=".projectCard"
+      :disabled="!draggableOn"
+    >
       <v-col
         cols="12"
         sm="6"
@@ -24,9 +30,7 @@
               <span>{{ project.lang.name }}</span>
             </div>
 
-            <p class="text--primary">
-              {{ project.description }}
-            </p>
+            <p class="text--primary">{{ project.description }}</p>
           </v-card-text>
 
           <v-card-actions>
@@ -46,14 +50,17 @@
 import Edit from "@/components/Admin/Dialog/Edit";
 import Remove from "@/components/Admin/Dialog/Remove";
 import draggable from "vuedraggable";
+import { mapGetters } from "vuex";
 
 export default {
+  name: "Project",
   components: {
     draggable,
     Edit,
     Remove
   },
   computed: {
+    ...mapGetters(["draggableOn"]),
     projects: {
       get() {
         return this.$store.state.projects.projects;
@@ -65,3 +72,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.top-padding {
+  padding-top: 64px;
+}
+</style>

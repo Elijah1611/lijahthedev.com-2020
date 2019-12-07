@@ -14,19 +14,11 @@
         <v-container>
           <v-row>
             <v-col cols="12">
-              <v-text-field
-                v-model="modifiedProject.title"
-                label="Title"
-                required
-              ></v-text-field>
+              <v-text-field v-model="modifiedProject.title" label="Title" required></v-text-field>
             </v-col>
 
             <v-col cols="12">
-              <v-text-field
-                v-model="modifiedProject.description"
-                label="Description"
-                required
-              ></v-text-field>
+              <v-text-field v-model="modifiedProject.description" label="Description" required></v-text-field>
             </v-col>
 
             <v-col cols="12">
@@ -38,11 +30,7 @@
             </v-col>
 
             <v-col cols="12" sm="6">
-              <v-text-field
-                v-model="modifiedProject.lang.name"
-                label="Language Name"
-                required
-              ></v-text-field>
+              <v-text-field v-model="modifiedProject.lang.name" label="Language Name" required></v-text-field>
             </v-col>
 
             <v-col cols="12" sm="6">
@@ -56,11 +44,7 @@
             </v-col>
 
             <v-col cols="12">
-              <v-text-field
-                v-model="modifiedProject.image"
-                label="Image URL"
-                required
-              ></v-text-field>
+              <v-text-field v-model="modifiedProject.image" label="Image URL" required></v-text-field>
 
               <v-img
                 :src="
@@ -72,19 +56,11 @@
             </v-col>
 
             <v-col cols="12">
-              <v-text-field
-                label="Github URL"
-                v-model="modifiedProject.links.github"
-                required
-              ></v-text-field>
+              <v-text-field label="Github URL" v-model="modifiedProject.links.github" required></v-text-field>
             </v-col>
 
             <v-col cols="12">
-              <v-text-field
-                label="Website URL"
-                v-model="modifiedProject.links.site"
-                required
-              ></v-text-field>
+              <v-text-field label="Website URL" v-model="modifiedProject.links.site" required></v-text-field>
             </v-col>
 
             <v-col cols="12" sm="8">
@@ -99,22 +75,11 @@
             </v-col>
 
             <v-col cols="6" sm="2">
-              <v-text-field
-                disabled
-                label="Order"
-                :value="projects.length"
-                outlined
-                required
-              ></v-text-field>
+              <v-text-field disabled label="Order" :value="projects.length" outlined required></v-text-field>
             </v-col>
 
             <v-col cols="6" sm="2">
-              <v-switch
-                v-model="modifiedProject.dark"
-                inset
-                label="Dark"
-                color="black"
-              ></v-switch>
+              <v-switch v-model="modifiedProject.dark" inset label="Dark" color="black"></v-switch>
             </v-col>
           </v-row>
         </v-container>
@@ -133,6 +98,7 @@ import placeholderImage from "@/assets/images/placeholder-image.png";
 import { mapGetters } from "vuex";
 
 export default {
+  name: "Edit",
   props: {
     project: {
       type: Object

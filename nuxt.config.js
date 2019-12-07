@@ -6,8 +6,8 @@ export default {
    ** Headers of the page
    */
   head: {
-    titleTemplate: "%s - " + process.env.npm_package_name,
-    title: process.env.npm_package_name || "",
+    titleTemplate: "%s | " + "LijahTheDev",
+    title: "LijahTheDev" || "",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -47,9 +47,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
-    "@nuxtjs/pwa",
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    "@nuxtjs/dotenv"
+    "@nuxtjs/pwa"
   ],
   /*
    ** Axios module configuration
@@ -75,6 +73,18 @@ export default {
           success: colors.green.accent3
         }
       }
+    }
+  },
+  pwa: {
+    icon: {
+      iconSrc: "/static/l-white.png"
+    },
+    manifest: {
+      short_name: "LTD",
+      name: "LijahTheDev",
+      lang: "en",
+      start_url: "/",
+      theme_color: "#333"
     }
   },
   /*

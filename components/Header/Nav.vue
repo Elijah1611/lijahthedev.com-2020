@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  name: "HeaderNav",
   props: {
     links: {
       type: Array,

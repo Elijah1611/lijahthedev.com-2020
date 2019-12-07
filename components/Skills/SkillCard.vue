@@ -1,13 +1,9 @@
 <template>
-  <ParallaxContainer :animationDuration="1000">
-    <ParallaxElement
-      :parallaxStrength="8"
-      type="depth"
-      class="parallax-container"
-    >
+  <ParallaxContainer>
+    <ParallaxElement :parallaxStrength="8" type="depth" class="parallax-container">
       <v-card :class="`${colorGradient} mx-auto`" height="400">
         <ParallaxElement
-          :parallaxStrength="30"
+          :parallaxStrength="20"
           type="translation"
           class="full-height-icon justify-center align-center"
         >
@@ -16,15 +12,8 @@
           </v-card-actions>
         </ParallaxElement>
 
-        <ParallaxElement
-          :parallaxStrength="15"
-          type="depth"
-          tag="div"
-          class="full-height-title"
-        >
-          <h3 class="display-2 font-weight-bold raised-style-light">
-            {{ title }}
-          </h3>
+        <ParallaxElement :parallaxStrength="15" type="depth" tag="div" class="full-height-title">
+          <h3 class="display-2 font-weight-bold raised-style-light">{{ title }}</h3>
         </ParallaxElement>
       </v-card>
     </ParallaxElement>
@@ -35,6 +24,7 @@
 import { ParallaxContainer, ParallaxElement } from "vue-mouse-parallax";
 
 export default {
+  name: "SkillCard",
   components: {
     ParallaxContainer,
     ParallaxElement

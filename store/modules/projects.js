@@ -4,11 +4,13 @@ import compareObjChanges from "@/helpers/compareObjChanges";
 export default {
   state: {
     projects: null,
-    oldOrder: null
+    oldOrder: null,
+    draggableOn: false
   },
 
   getters: {
-    projects: state => state.projects
+    projects: state => state.projects,
+    draggableOn: state => state.draggableOn
   },
 
   mutations: {
@@ -17,6 +19,9 @@ export default {
     },
     SET_ORDER(state, order) {
       state.oldOrder = order;
+    },
+    SET_DRAG(state, value) {
+      state.draggableOn = value;
     }
   },
   actions: {

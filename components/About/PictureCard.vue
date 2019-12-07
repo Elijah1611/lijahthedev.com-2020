@@ -4,17 +4,13 @@
       <v-card-title>Full Stack Software Developer</v-card-title>
     </div>
 
-    <div class="blue-gradient">
-      Dallas-Fort Worth, TX
-    </div>
+    <div class="blue-gradient">Dallas-Fort Worth, TX</div>
   </v-card>
 </template>
 
 <script>
 export default {
-  data() {
-    return {};
-  }
+  name: "PictureCard"
 };
 </script>
 

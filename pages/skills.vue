@@ -24,6 +24,9 @@ import BottomNav from "@/components/Footer/BottomNav";
 import { mapGetters } from "vuex";
 
 export default {
+  head: {
+    title: "Skills"
+  },
   components: {
     Header,
     SkillCard,

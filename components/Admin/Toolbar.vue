@@ -1,9 +1,7 @@
 <template>
-  <v-toolbar>
+  <v-toolbar class="fixed-bar">
     <nuxt-link to="/">
-      <v-toolbar-title class="admin-title">
-        LijahTheDev.com
-      </v-toolbar-title>
+      <v-toolbar-title class="admin-title">LijahTheDev.com</v-toolbar-title>
     </nuxt-link>
 
     <v-spacer></v-spacer>
@@ -23,6 +21,7 @@
 <script>
 import Add from "@/components/Admin/Dialog/Add";
 export default {
+  name: "Toolbar",
   components: {
     Add
   },
@@ -43,5 +42,11 @@ export default {
 .admin-title {
   font-family: "Gugi", "Segoe UI", Verdana, sans-serif;
   color: white;
+}
+
+.fixed-bar {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
 }
 </style>

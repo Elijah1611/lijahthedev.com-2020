@@ -22,14 +22,11 @@
         required
       ></v-text-field>
 
-      <v-btn color="blue" to="/"> <v-icon>mdi-home</v-icon>Home </v-btn>
+      <v-btn color="blue" to="/">
+        <v-icon>mdi-home</v-icon>Home
+      </v-btn>
 
-      <v-btn
-        v-if="!logout"
-        :disabled="valid !== true"
-        color="warning"
-        @click="logIn"
-      >
+      <v-btn v-if="!logout" :disabled="valid !== true" color="warning" @click="logIn">
         <v-icon color="orange">mdi-fire</v-icon>Login
       </v-btn>
 
@@ -42,6 +39,7 @@
 
 <script>
 export default {
+  name: "LoginForm",
   props: {
     logout: {
       type: Boolean,
