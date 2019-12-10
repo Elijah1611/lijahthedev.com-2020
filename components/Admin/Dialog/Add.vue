@@ -33,6 +33,15 @@
               </v-col>
 
               <v-col cols="12">
+                <v-textarea
+                  v-model="newProject.longDescription"
+                  label="Long Description"
+                  :rules="isRequiredRule('Long Description')"
+                  required
+                ></v-textarea>
+              </v-col>
+
+              <v-col cols="12">
                 <v-autocomplete
                   v-model="newProject.year"
                   :items="[2021, 2020, 2019, 2018, 2017, 2016, 2015]"
@@ -40,7 +49,7 @@
                 ></v-autocomplete>
               </v-col>
 
-              <v-col cols="12" sm="6">
+              <v-col cols="12" sm="4">
                 <v-text-field
                   v-model="newProject.lang.name"
                   label="Language Name"
@@ -50,7 +59,7 @@
                 ></v-text-field>
               </v-col>
 
-              <v-col cols="12" sm="6">
+              <v-col cols="12" sm="4">
                 <v-text-field
                   v-model="newProject.lang.color"
                   label="Language Color"
@@ -58,6 +67,16 @@
                   hint="Hexadecimal Color"
                   persistent-hint
                   :rules="isRequiredRule('Language Color')"
+                  required
+                ></v-text-field>
+              </v-col>
+
+              <v-col cols="12" sm="4">
+                <v-text-field
+                  v-model="newProject.lang.icon"
+                  label="Language Icon"
+                  :color="newProject.lang.color"
+                  :rules="isRequiredRule('Icon')"
                   required
                 ></v-text-field>
               </v-col>
@@ -115,7 +134,12 @@
               </v-col>
 
               <v-col cols="6" sm="2">
-                <v-switch v-model="newProject.dark" inset label="Dark" color="black"></v-switch>
+                <v-switch
+                  v-model="newProject.dark"
+                  inset
+                  label="Dark"
+                  color="black"
+                ></v-switch>
               </v-col>
             </v-row>
           </v-form>
@@ -124,7 +148,9 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn @click="dialog = false">Close</v-btn>
-        <v-btn :disabled="valid == false" color="blue darken-1" @click="add()">Save</v-btn>
+        <v-btn :disabled="valid == false" color="blue darken-1" @click="add()"
+          >Save</v-btn
+        >
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -143,6 +169,7 @@ export default {
       newProject: {
         title: "",
         description: "",
+        longDescription: "",
         year: 2019,
         image: "",
         links: {
@@ -151,6 +178,7 @@ export default {
         },
         lang: {
           name: "",
+          icon: "",
           color: "#FFFF00"
         },
         dark: false,
@@ -171,8 +199,15 @@ export default {
     isRequiredRule(mainText) {
       return [v => !!v || `${mainText} is required`];
     },
+    longDescriptionParser(bio) {
+      return bio.split(/\n\n/).map(paragraph => paragraph.trim());
+    },
     add() {
-      this.$store.dispatch("addProject", this.newProject);
+      const bio = this.longDescriptionParser(this.newProject.longDescription);
+      this.$store.dispatch("addProject", {
+        ...this.newProject,
+        longDescription: bio
+      });
     }
   },
   mounted() {

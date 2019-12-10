@@ -14,11 +14,28 @@
         <v-container>
           <v-row>
             <v-col cols="12">
-              <v-text-field v-model="modifiedProject.title" label="Title" required></v-text-field>
+              <v-text-field
+                v-model="modifiedProject.title"
+                label="Title"
+                required
+              ></v-text-field>
             </v-col>
 
             <v-col cols="12">
-              <v-text-field v-model="modifiedProject.description" label="Description" required></v-text-field>
+              <v-text-field
+                v-model="modifiedProject.description"
+                label="Description"
+                required
+              ></v-text-field>
+            </v-col>
+
+            <v-col cols="12">
+              <v-textarea
+                v-model="longDescriptionFormatted"
+                label="Long Description"
+                :rules="isRequiredRule('Long Description')"
+                required
+              ></v-textarea>
             </v-col>
 
             <v-col cols="12">
@@ -30,7 +47,13 @@
             </v-col>
 
             <v-col cols="12" sm="6">
-              <v-text-field v-model="modifiedProject.lang.name" label="Language Name" required></v-text-field>
+              <v-text-field
+                v-model="modifiedProject.lang.name"
+                label="Language Name"
+                :color="modifiedProject.lang.color"
+                :rules="isRequiredRule('Language Name')"
+                required
+              ></v-text-field>
             </v-col>
 
             <v-col cols="12" sm="6">
@@ -38,13 +61,30 @@
                 v-model="modifiedProject.lang.color"
                 label="Language Color"
                 hint="Hexadecimal Color"
+                :color="modifiedProject.lang.color"
                 persistent-hint
+                :rules="isRequiredRule('Language Color')"
+                required
+              ></v-text-field>
+            </v-col>
+
+            <v-col cols="12" sm="4">
+              <v-text-field
+                v-model="modifiedProject.lang.icon"
+                label="Language Icon"
+                :color="modifiedProject.lang.color"
+                :rules="isRequiredRule('Icon')"
                 required
               ></v-text-field>
             </v-col>
 
             <v-col cols="12">
-              <v-text-field v-model="modifiedProject.image" label="Image URL" required></v-text-field>
+              <v-text-field
+                v-model="modifiedProject.image"
+                label="Image URL"
+                :rules="isRequiredRule('Image')"
+                required
+              ></v-text-field>
 
               <v-img
                 :src="
@@ -56,11 +96,21 @@
             </v-col>
 
             <v-col cols="12">
-              <v-text-field label="Github URL" v-model="modifiedProject.links.github" required></v-text-field>
+              <v-text-field
+                label="Github URL"
+                v-model="modifiedProject.links.github"
+                :rules="isRequiredRule('GitHub URL')"
+                required
+              ></v-text-field>
             </v-col>
 
             <v-col cols="12">
-              <v-text-field label="Website URL" v-model="modifiedProject.links.site" required></v-text-field>
+              <v-text-field
+                label="Website URL"
+                v-model="modifiedProject.links.site"
+                :rules="isRequiredRule('Website URL')"
+                required
+              ></v-text-field>
             </v-col>
 
             <v-col cols="12" sm="8">
@@ -70,16 +120,28 @@
                 hint="Hexadecimal Color"
                 value="#FFF"
                 persistent-hint
+                :rules="isRequiredRule('Color')"
                 required
               ></v-text-field>
             </v-col>
 
             <v-col cols="6" sm="2">
-              <v-text-field disabled label="Order" :value="projects.length" outlined required></v-text-field>
+              <v-text-field
+                disabled
+                label="Order"
+                :value="projects.length"
+                outlined
+                required
+              ></v-text-field>
             </v-col>
 
             <v-col cols="6" sm="2">
-              <v-switch v-model="modifiedProject.dark" inset label="Dark" color="black"></v-switch>
+              <v-switch
+                v-model="modifiedProject.dark"
+                inset
+                label="Dark"
+                color="black"
+              ></v-switch>
             </v-col>
           </v-row>
         </v-container>
@@ -108,11 +170,23 @@ export default {
     return {
       placeholderImage,
       dialog: false,
-      modifiedProject: { ...this.project }
+      modifiedProject: JSON.parse(JSON.stringify(this.project)) // Deep copy object
     };
   },
   computed: {
-    ...mapGetters(["projects"])
+    ...mapGetters(["projects"]),
+    longDescriptionFormatted: {
+      get() {
+        if (!this.modifiedProject.longDescription) return [];
+
+        return this.modifiedProject.longDescription.join("\n\n");
+      },
+      set(value) {
+        this.modifiedProject.longDescription = value
+          .split("\n\n")
+          .map(paragraph => paragraph.trim());
+      }
+    }
   },
   methods: {
     edit() {
@@ -123,6 +197,9 @@ export default {
         update: this.modifiedProject,
         current: { ...this.project }
       });
+    },
+    isRequiredRule(mainText) {
+      return [v => !!v || `${mainText} is required`];
     }
   }
 };

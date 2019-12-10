@@ -71,7 +71,7 @@ export default {
       try {
         await firestore.collection("projects").add(newProject);
 
-        location.href("/admin");
+        location.href = "/admin";
       } catch (error) {
         throw error;
       }

@@ -17,14 +17,7 @@ export default {
         content: process.env.npm_package_description || ""
       }
     ],
-    link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      {
-        rel: "stylesheet",
-        href:
-          "https://fonts.googleapis.com/css?family=Bungee+Shade|Gugi:400,700&display=swap"
-      }
-    ]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
   /*
    ** Customize the progress-bar color
@@ -33,7 +26,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: ["~/assets/main.scss"],
+  css: [{ src: "~assets/main.scss", lang: "scss" }],
+
+  optimizedImages: {
+    optimizeImages: true
+  },
   /*
    ** Plugins to load before mounting the App
    */
@@ -54,7 +51,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
-    "@nuxtjs/pwa"
+    "@nuxtjs/pwa",
+    "@bazzite/nuxt-optimized-images"
   ],
   /*
    ** Axios module configuration
@@ -83,17 +81,19 @@ export default {
     }
   },
   pwa: {
-    icon: {
-      iconSrc: "/static/l-white.png"
-    },
     manifest: {
-      short_name: "LTD",
       name: "LijahTheDev",
+      short_name: "LTD",
       lang: "en",
-      start_url: "/",
-      theme_color: "#333"
+      description:
+        "LijaTheDev.com, Paul Scott's professional portfolio website using Nuxt.",
+      theme_color: "#333",
+      background_color: "#000",
+      start_url: "https://lijahthedev.com",
+      display: "standalone"
     }
   },
+
   /*
    ** Build configuration
    */
@@ -101,6 +101,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {},
+    extractCSS: true
   }
 };
