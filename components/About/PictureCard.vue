@@ -16,10 +16,8 @@ export default {
 
 <style lang="scss" scoped>
 .black-gradient {
-  height: 400px;
+  margin-top: 20px;
   background-color: #000000;
-  background-image: linear-gradient(5deg, #000000a9 0%, #ffffff00 44%),
-    url("~assets/images/profile-img-cutout-paint.png");
 }
 
 .blue-gradient {

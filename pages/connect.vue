@@ -5,11 +5,7 @@
     <v-row :no-gutters="this.$vuetify.breakpoint.smAndDown">
       <v-col>
         <a :href="github" target="_blank">
-          <SocialBox
-            title="GitHub"
-            icon="mdi-github-circle"
-            color="green"
-          ></SocialBox>
+          <SocialBox title="GitHub" icon="mdi-github" color="green"></SocialBox>
         </a>
       </v-col>
 
@@ -17,7 +13,7 @@
         <a :href="linkedin" target="_blank">
           <SocialBox
             title="LinkedIn"
-            icon="mdi-linkedin-box"
+            icon="mdi-linkedin"
             color="blue"
           ></SocialBox>
         </a>

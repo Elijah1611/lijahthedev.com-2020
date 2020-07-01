@@ -1,6 +1,11 @@
 <template>
   <v-bottom-navigation v-model="active">
-    <v-btn v-for="(link, i) in navLinks" :key="i" :value="link.value" :to="link.route">
+    <v-btn
+      v-for="(link, i) in navLinks"
+      :key="i"
+      :value="link.value"
+      :to="link.route"
+    >
       <span>{{ link.title }}</span>
       <v-icon>{{ link.icon }}</v-icon>
     </v-btn>
@@ -24,7 +29,7 @@ export default {
           title: "About",
           route: "/about",
           value: "about",
-          icon: "mdi-account-card-details-outline"
+          icon: "mdi-account-details-outline"
         },
         {
           title: "Skills",
