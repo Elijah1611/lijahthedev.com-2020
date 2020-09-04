@@ -22,7 +22,7 @@
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
     "nuxt": "^2.0.0",
-    "vue-moment": "^4.0.0",
+    "vue-moment": "^4.1.0",
     "vue-mouse-parallax": "^1.2.2",
     "vuedraggable": "^2.23.2"
   },
